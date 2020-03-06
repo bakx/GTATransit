@@ -1,0 +1,5 @@
+﻿        /// <summary>
+        /// %DESCRIPTION%
+        /// </summary>
+        [DataMember(Name = "%DATAMEMBER%", IsRequired = %REQUIRED%)]
+        public %TYPE% %NAME% { get; set; }
