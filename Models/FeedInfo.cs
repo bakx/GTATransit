@@ -5,6 +5,13 @@ namespace Models
     public class FeedInfo
     {
         /// <summary>
+        /// Optional name of the level (that matches level lettering/numbering used inside the building or the station). Is useful
+        /// for elevator routing (e.g. “take the elevator to level “Mezzanine” or “Platforms” or “-1”).
+        /// </summary>
+        [DataMember(Name = "level_name", IsRequired = false)]
+        public string LevelName { get; set; }
+
+        /// <summary>
         /// Full name of the organization that publishes the dataset. This may be the same as one of the agency.agency_name values.
         /// </summary>
         [DataMember(Name = "feed_publisher_name", IsRequired = true)]

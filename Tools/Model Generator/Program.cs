@@ -29,25 +29,54 @@ namespace ModelGenerator
 
             StringBuilder builder = new StringBuilder();
 
-            // 1. Use the reader methods
+            //
+            string columnName = null;
+            bool required = false;
+            StringBuilder columnDescription = new StringBuilder();
+
             do
             {
                 while (reader.Read())
                 {
-                    if (reader.GetString(0) == null)
+                    // New column
+                    string columnValue = reader.GetString(0);
+
+                    // If the column has a null value, assume that this row has multiple description rows
+                    if (columnValue == null)
                     {
-                        break;
+                        columnDescription.Append(reader.GetString(3));
+                        continue;
                     }
 
-                    string template = methodTemplate
-                        .Replace("%DATAMEMBER%", reader.GetString(0))
-                        .Replace("%REQUIRED%", Convert.ToString(reader.GetString(2) == "Required").ToLower())
-                        .Replace("%DESCRIPTION%", reader.GetString(3))
-                        .Replace("%TYPE%", "string")
-                        .Replace("%NAME%", textInfo.ToTitleCase(reader.GetString(0)).Replace("_", ""));
+                    if (columnName != null)
+                    {
+                        // Write existing record to file
+                        string template = methodTemplate
+                            .Replace("%DATAMEMBER%", columnName)
+                            .Replace("%REQUIRED%", Convert.ToString(required).ToLower())
+                            .Replace("%DESCRIPTION%", columnDescription.ToString())
+                            .Replace("%TYPE%", "string")
+                            .Replace("%NAME%", textInfo.ToTitleCase(columnName).Replace("_", ""));
 
-                    builder.Append(template);
+                        builder.Append(template);
+                    }
+
+                    // Clear description
+                    columnDescription.Clear();
+
+                    // Column name has a value
+                    columnName = reader.GetString(0);
+                    required = reader.GetString(2) == "Required";
+                    columnDescription.Append(reader.GetString(3));
                 }
+
+                // Write final method
+                builder.Append(methodTemplate
+                    .Replace("%DATAMEMBER%", columnName)
+                    .Replace("%REQUIRED%", Convert.ToString(required).ToLower())
+                    .Replace("%DESCRIPTION%", columnDescription.ToString())
+                    .Replace("%TYPE%", "string")
+                    .Replace("%NAME%", textInfo.ToTitleCase(columnName ?? throw new InvalidOperationException()).Replace("_", "")));
 
                 // Get class name
                 string className = textInfo.ToTitleCase(reader.Name).Replace(".Txt", "").Replace("_", "");

@@ -5,7 +5,7 @@ namespace Models
     public class Agency
     {
         /// <summary>
-        /// Identifies a transit brand which is often synonymous with a transit agency. Note that in some cases, such as when a
+        /// Identifies a transit brandwhich is often synonymous with a transit agency. Note that in some cases, such as when a
         /// single agency operates multiple separate services, agencies and brands are distinct. This document uses the term
         /// "agency" in place of "brand". A dataset may contain data from multiple agencies. This field is required when the
         /// dataset contains data for multiple transit agencies, otherwise it is optional.
