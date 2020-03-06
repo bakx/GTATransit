@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace Parser
 {
-    public static class Parser<T> where T : class, new()
+    public class Parser<T> where T : class, new()
     {
         public static Dictionary<string, int> Configure(string columns)
         {
@@ -22,27 +24,53 @@ namespace Parser
                 .Select(n => n.Name.Remove(0, 4));
 
             return variables.Select(variable => Utilities<T>
-                .GetDataMemberName(t, variable))
+                    .GetDataMemberName(t, variable))
                 .ToDictionary(
-                    fieldName => fieldName, 
+                    fieldName => fieldName,
                     fieldName => dataFields.IndexOf(fieldName)
-                    );
+                );
         }
 
-        public static void Process(Dictionary<string, int> config, string readLine)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="readLine"></param>
+        /// <returns></returns>
+        public static T Process(Dictionary<string, int> config, string readLine)
         {
-            var p = readLine.Split(",");
+            string[] p = readLine.Split(",");
 
-           // config.SelectMany(c => c.Value)
-           for (int i = 0; i < p.Length; i++)
-           {
-               Console.WriteLine($"{config.Keys.ToList().IndexOf(null, i)} = {p[i]}" );
-           }
-          
+            // Create new T
+            T t = new T();
+            
+            // Loop through items
+            for (int i = 0; i < p.Length; i++)
+            {
+                // Get the key
+                (string key, _) = config.SingleOrDefault(c => c.Value == i);
 
-//            Console.WriteLine(readLine);
+                // If the key does not exists, it's not part of the standards
+                if (key == null)
+                {
+                    continue;
+                }
+
+                PropertyInfo propInfo =
+                    (from property in typeof(T).GetProperties()
+                        let attributes = property
+                            .GetCustomAttributes(typeof(DataMemberAttribute), false)
+                            .OfType<DataMemberAttribute>()
+                        where attributes.Any(a => a.Name == key)
+                        select property).FirstOrDefault();
+
+                if (propInfo != null)
+                {
+                    propInfo.SetValue(t, p[i]);
+                }
+            }
+
+            return t;
         }
     }
-
-   
 }

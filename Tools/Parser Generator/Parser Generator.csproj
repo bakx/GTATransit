@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>ParserGenerator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="methodTemplate.txt" />
+    <None Remove="parserListTemplate.txt" />
+    <None Remove="parserProcessTemplate.txt" />
+    <None Remove="parserTemplate.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+<Content Include="parserTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parserListTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parserProcessTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
