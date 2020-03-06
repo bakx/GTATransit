@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="classTemplate.txt" />
-    <None Remove="methodTemplate.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="classTemplate.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

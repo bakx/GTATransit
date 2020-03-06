@@ -1,0 +1,10 @@
+﻿    case "%FILE%":
+            if (firstLine)
+            {
+                fieldConfig = Parser<%NAME%>.Configure(readLine);
+                firstLine = false;
+                continue;
+            }
+
+            %LNAME%.Add(Parser<%NAME%>.Process(fieldConfig, readLine));
+            break;

@@ -8,14 +8,20 @@ namespace Parser
     {
         public static string GetDataMemberName(T t, string thePropertyName)
         {
-            PropertyInfo pi = t.GetType().GetProperty(thePropertyName);
-            if (pi == null)
+            PropertyInfo propertyInfo = t.GetType().GetProperty(thePropertyName);
+            if (propertyInfo == null)
+            {
                 throw new ApplicationException($"{t.GetType().Name}.{thePropertyName} does not exist");
+            }
 
-            if (!(pi.GetCustomAttribute(typeof(DataMemberAttribute), true) is DataMemberAttribute ca))
-                throw new ApplicationException($"{t.GetType().Name}.{thePropertyName} does not have DataMember Attribute"); // or return thePropertyName?
+            if (!(propertyInfo.GetCustomAttribute(typeof(DataMemberAttribute), true) is DataMemberAttribute
+                dataMemberAttribute))
+            {
+                throw new ApplicationException(
+                    $"{t.GetType().Name}.{thePropertyName} does not have DataMember Attribute"); // or return thePropertyName?
+            }
 
-            return ca.Name;
+            return dataMemberAttribute.Name;
         }
     }
 }

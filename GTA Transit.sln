@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser", "Parser\Parser.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{B7ED305E-C1FA-407A-8C76-2233786936AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model Generator", "Tools\Model Generator\Model Generator.csproj", "{586470F2-FB03-45FA-A3F1-367A6F4C0783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model Generator", "Tools\Model Generator\Model Generator.csproj", "{586470F2-FB03-45FA-A3F1-367A6F4C0783}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser Generator", "Tools\Parser Generator\Parser Generator.csproj", "{1475A9C1-0553-4B00-955A-50D6FD7A430B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,12 +36,17 @@ Global
 		{586470F2-FB03-45FA-A3F1-367A6F4C0783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{586470F2-FB03-45FA-A3F1-367A6F4C0783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{586470F2-FB03-45FA-A3F1-367A6F4C0783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1475A9C1-0553-4B00-955A-50D6FD7A430B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1475A9C1-0553-4B00-955A-50D6FD7A430B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1475A9C1-0553-4B00-955A-50D6FD7A430B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1475A9C1-0553-4B00-955A-50D6FD7A430B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{586470F2-FB03-45FA-A3F1-367A6F4C0783} = {B7ED305E-C1FA-407A-8C76-2233786936AA}
+		{1475A9C1-0553-4B00-955A-50D6FD7A430B} = {B7ED305E-C1FA-407A-8C76-2233786936AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E1B2D5A-A0E6-4F90-9A21-ED2BBBF5210A}

@@ -1,0 +1,23 @@
+﻿// Start of automatically generated code
+
+%LIST%
+
+foreach (FileInfo file in files)
+{
+    StreamReader reader = new StreamReader(file.FullName);
+
+    bool firstLine = true;
+    Dictionary<string, int> fieldConfig = null;
+
+    while (!reader.EndOfStream)
+    {
+        string readLine = await reader.ReadLineAsync();
+
+        switch (file.Name)
+        {
+            %SWITCH%
+        }
+    }
+}
+
+// end of automatically generated code
