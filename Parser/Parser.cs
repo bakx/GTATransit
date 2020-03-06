@@ -50,8 +50,11 @@ namespace Parser
                 // Get the key
                 (string key, _) = config.SingleOrDefault(c => c.Value == i);
 
-                // Debug 
-                Debug.Assert(string.IsNullOrEmpty(key));
+                // If the key does not exists, it's not part of the standards
+                if (key == null)
+                {
+                    continue;
+                }
 
                 PropertyInfo propInfo =
                     (from property in typeof(T).GetProperties()
