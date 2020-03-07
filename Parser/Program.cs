@@ -44,9 +44,16 @@ namespace Parser
                 bool firstLine = true;
                 Dictionary<string, int> fieldConfig = null;
 
+                // Diagnostics
+                Console.Clear();
+                Console.WriteLine($"Processing {file.Name}");
+
                 while (!reader.EndOfStream)
                 {
                     string readLine = await reader.ReadLineAsync();
+
+                    // Diagnostics
+                    Console.Write(".");
 
                     switch (file.Name)
                     {
@@ -229,55 +236,55 @@ namespace Parser
             // Save the data
             //
 
-            Console.WriteLine($"Saving {nameof(Agency)} ...");
+            Console.WriteLine($"Saving {nameof(Agency)}");
             await DataHandler.SaveAgency(agency);
 
-            Console.WriteLine($"Saving {nameof(Attributions)} ...");
+            Console.WriteLine($"Saving {nameof(Attributions)}");
             await DataHandler.SaveAttributions(attributions);
 
-            Console.WriteLine($"Saving {nameof(Calendar)} ...");
+            Console.WriteLine($"Saving {nameof(Calendar)}");
             await DataHandler.SaveCalendar(calendar);
 
-            Console.WriteLine($"Saving {nameof(CalendarDates)} ...");
+            Console.WriteLine($"Saving {nameof(CalendarDates)}");
             await DataHandler.SaveCalendarDates(calendarDates);
 
-            Console.WriteLine($"Saving {nameof(FareAttributes)} ...");
+            Console.WriteLine($"Saving {nameof(FareAttributes)}");
             await DataHandler.SaveFareAttributes(fareAttributes);
 
-            Console.WriteLine($"Saving {nameof(FareRules)} ...");
+            Console.WriteLine($"Saving {nameof(FareRules)}");
             await DataHandler.SaveFareRules(fareRules);
 
-            Console.WriteLine($"Saving {nameof(FeedInfo)} ...");
+            Console.WriteLine($"Saving {nameof(FeedInfo)}");
             await DataHandler.SaveFeedInfo(feedInfo);
 
-            Console.WriteLine($"Saving {nameof(Frequencies)} ...");
+            Console.WriteLine($"Saving {nameof(Frequencies)}");
             await DataHandler.SaveFrequencies(frequencies);
 
-            Console.WriteLine($"Saving {nameof(Levels)} ...");
+            Console.WriteLine($"Saving {nameof(Levels)}");
             await DataHandler.SaveLevels(levels);
 
-            Console.WriteLine($"Saving {nameof(Pathways)} ...");
+            Console.WriteLine($"Saving {nameof(Pathways)}");
             await DataHandler.SavePathways(pathways);
 
-            Console.WriteLine($"Saving {nameof(Routes)} ...");
+            Console.WriteLine($"Saving {nameof(Routes)}");
             await DataHandler.SaveRoutes(routes);
 
-            Console.WriteLine($"Saving {nameof(Shapes)} ...");
+            Console.WriteLine($"Saving {nameof(Shapes)}");
             await DataHandler.SaveShapes(shapes);
 
-            Console.WriteLine($"Saving {nameof(Stops)} ...");
+            Console.WriteLine($"Saving {nameof(Stops)}");
             await DataHandler.SaveStops(stops);
 
-            Console.WriteLine($"Saving {nameof(StopTimes)} ...");
+            Console.WriteLine($"Saving {nameof(StopTimes)}");
             await DataHandler.SaveStopTimes(stopTimes);
 
-            Console.WriteLine($"Saving {nameof(Transfers)} ...");
+            Console.WriteLine($"Saving {nameof(Transfers)}");
             await DataHandler.SaveTransfers(transfers);
 
-            Console.WriteLine($"Saving {nameof(Translations)} ...");
+            Console.WriteLine($"Saving {nameof(Translations)}");
             await DataHandler.SaveTranslations(translations);
 
-            Console.WriteLine($"Saving {nameof(Trips)} ...");
+            Console.WriteLine($"Saving {nameof(Trips)}");
             await DataHandler.SaveTrips(trips);
         }
     }

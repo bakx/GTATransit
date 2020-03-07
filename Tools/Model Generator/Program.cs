@@ -116,7 +116,7 @@ namespace ModelGenerator
             } while (reader.NextResult());
 
             // Write the dataHandler file
-            File.WriteAllText($"dataHandler.cs",
+            File.WriteAllText("dataHandler.cs",
                 dataHandlerTemplate
                     .Replace("%METHODS%", dataHandlerMethods.ToString())
             );
