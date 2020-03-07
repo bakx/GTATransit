@@ -27,16 +27,17 @@ namespace ParserGenerator
             foreach (FileInfo file in files)
             {
                 string className = textInfo.ToTitleCase(file.Name.Replace(".txt", "")).Replace("_", "");
+                string lowerClassName = className[0].ToString().ToLower() + className.Remove(0, 1);
 
                 listBuilder.AppendLine(parserListTemplate
                     .Replace("%NAME%", className)
-                    .Replace("%LNAME%", className.ToLower())
+                    .Replace("%LNAME%", lowerClassName)
                 );
 
                 switchBuilder.Append(parserProcessTemplate
                     .Replace("%FILE%", file.Name)
                     .Replace("%NAME%", className)
-                    .Replace("%LNAME%", className.ToLower())
+                    .Replace("%LNAME%", lowerClassName)
                 );
             }
 

@@ -19,10 +19,10 @@ namespace Parser
             // Start of automatically generated code
 
             List<Agency> agency = new List<Agency>();
-            List<CalendarDates> calendarDateses = new List<CalendarDates>();
-            List<FareAttributes> fareAttributeses = new List<FareAttributes>();
-            List<FareRules> fareRuleses = new List<FareRules>();
-            List<FeedInfo> feedInfos = new List<FeedInfo>();
+            List<CalendarDates> calendarDates = new List<CalendarDates>();
+            List<FareAttributes> fareAttributes = new List<FareAttributes>();
+            List<FareRules> fareRules = new List<FareRules>();
+            List<FeedInfo> feedInfo = new List<FeedInfo>();
             List<Routes> routes = new List<Routes>();
             List<Shapes> shapes = new List<Shapes>();
             List<Stops> stops = new List<Stops>();
@@ -62,7 +62,7 @@ namespace Parser
                                 continue;
                             }
 
-                            calendarDateses.Add(Parser<CalendarDates>.Process(fieldConfig, readLine));
+                            calendarDates.Add(Parser<CalendarDates>.Process(fieldConfig, readLine));
                             break;
                         case "fare_attributes.txt":
                             if (firstLine)
@@ -72,7 +72,7 @@ namespace Parser
                                 continue;
                             }
 
-                            fareAttributeses.Add(Parser<FareAttributes>.Process(fieldConfig, readLine));
+                            fareAttributes.Add(Parser<FareAttributes>.Process(fieldConfig, readLine));
                             break;
                         case "fare_rules.txt":
                             if (firstLine)
@@ -82,7 +82,7 @@ namespace Parser
                                 continue;
                             }
 
-                            fareRuleses.Add(Parser<FareRules>.Process(fieldConfig, readLine));
+                            fareRules.Add(Parser<FareRules>.Process(fieldConfig, readLine));
                             break;
                         case "feed_info.txt":
                             if (firstLine)
@@ -92,7 +92,7 @@ namespace Parser
                                 continue;
                             }
 
-                            feedInfos.Add(Parser<FeedInfo>.Process(fieldConfig, readLine));
+                            feedInfo.Add(Parser<FeedInfo>.Process(fieldConfig, readLine));
                             break;
                         case "routes.txt":
                             if (firstLine)
@@ -164,11 +164,30 @@ namespace Parser
 
                             trips.Add(Parser<Trips>.Process(fieldConfig, readLine));
                             break;
+
                     }
                 }
             }
 
             // end of automatically generated code
+
+            // Save the data
+            //
+
+            /*
+            List<Agency> agency = new List<Agency>();
+            List<CalendarDates> calendarDates = new List<CalendarDates>();
+            List<FareAttributes> fareAttributes = new List<FareAttributes>();
+            List<FareRules> fareRules = new List<FareRules>();
+            List<FeedInfo> feedInfo = new List<FeedInfo>();
+            List<Routes> routes = new List<Routes>();
+            List<Shapes> shapes = new List<Shapes>();
+            List<Stops> stops = new List<Stops>();
+            List<StopAmentities> stopAmentities = new List<StopAmentities>();
+            List<StopTimes> stopTimes = new List<StopTimes>();
+            List<Transfers> transfers = new List<Transfers>();
+            List<Trips> trips = new List<Trips>();
+            */
 
             Debugger.Break();
         }
