@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Models;
+using Data;
 
 namespace Parser
 {

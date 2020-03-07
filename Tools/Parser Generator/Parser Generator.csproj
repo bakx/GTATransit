@@ -8,12 +8,16 @@
 
   <ItemGroup>
     <None Remove="methodTemplate.txt" />
+    <None Remove="parserDbSetTemplate.txt" />
     <None Remove="parserListTemplate.txt" />
     <None Remove="parserProcessTemplate.txt" />
     <None Remove="parserTemplate.txt" />
   </ItemGroup>
 
   <ItemGroup>
+<Content Include="parserDbSetTemplate.txt">
+  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+</Content>
 <Content Include="parserTemplate.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

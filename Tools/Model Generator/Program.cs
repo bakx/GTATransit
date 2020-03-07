@@ -16,6 +16,7 @@ namespace ModelGenerator
             // Read templates
             string classTemplate = File.ReadAllText("classTemplate.txt");
             string methodTemplate = File.ReadAllText("methodTemplate.txt");
+            string dbModelTemplate = File.ReadAllText("dbModelTemplate.txt");
 
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
@@ -28,6 +29,10 @@ namespace ModelGenerator
             using IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
 
             StringBuilder builder = new StringBuilder();
+
+            // Create export directories
+            Directory.CreateDirectory("models");
+            Directory.CreateDirectory("db");
 
             //
             string columnName = null;
@@ -82,12 +87,18 @@ namespace ModelGenerator
                 string className = textInfo.ToTitleCase(reader.Name).Replace(".Txt", "").Replace("_", "");
 
                 // Write file
-                File.WriteAllText($"{className}.cs", 
+                File.WriteAllText($"models/{className}.cs", 
                     classTemplate
                         .Replace("%NAME%", className)
                         .Replace("%CLASS%", builder.ToString())
                     );
 
+                // Write db file
+                File.WriteAllText($"db/{className}.cs",
+                    dbModelTemplate
+                        .Replace("%NAME%", className)
+                );
+                
                 // Clear string builder
                 builder.Clear();
 

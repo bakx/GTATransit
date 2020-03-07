@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -12,12 +13,14 @@ namespace ParserGenerator
 
             // Read templates
             string parserTemplate = File.ReadAllText("parserTemplate.txt");
+            string parserDbSetTemplate = File.ReadAllText("parserDbSetTemplate.txt");
             string parserListTemplate = File.ReadAllText("parserListTemplate.txt");
             string parserProcessTemplate = File.ReadAllText("parserProcessTemplate.txt");
 
             // GTFS Folder
-            string gtfsPath = args.Length > 0 ? args[0] : @"C:\Users\gideo\Downloads\GO_GTFS";
+            string gtfsPath = args.Length > 0 ? args[0] : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GO_GTFS");
 
+            StringBuilder dbSetBuilder = new StringBuilder();
             StringBuilder listBuilder = new StringBuilder();
             StringBuilder switchBuilder = new StringBuilder();
 
@@ -28,6 +31,10 @@ namespace ParserGenerator
             {
                 string className = textInfo.ToTitleCase(file.Name.Replace(".txt", "")).Replace("_", "");
                 string lowerClassName = className[0].ToString().ToLower() + className.Remove(0, 1);
+
+                dbSetBuilder.AppendLine(parserDbSetTemplate
+                    .Replace("%NAME%", className)
+                );
 
                 listBuilder.AppendLine(parserListTemplate
                     .Replace("%NAME%", className)
@@ -41,7 +48,12 @@ namespace ParserGenerator
                 );
             }
 
-            File.WriteAllText($"parser.cs",
+
+            File.WriteAllText("DbSet.cs",
+                dbSetBuilder.ToString()
+                );
+
+            File.WriteAllText("parser.cs",
                 parserTemplate
                     .Replace("%LIST%", listBuilder.ToString())
                     .Replace("%SWITCH%", switchBuilder.ToString())
