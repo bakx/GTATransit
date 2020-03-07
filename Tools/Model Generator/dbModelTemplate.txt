@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class %NAME% : Models.%NAME%
+    public class %NAME% : global::Models.%NAME%
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

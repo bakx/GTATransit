@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class StopAmentities : Models.StopAmentities
+    public class Stops : global::Models.Stops
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

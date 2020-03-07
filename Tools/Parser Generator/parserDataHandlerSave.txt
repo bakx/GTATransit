@@ -1,0 +1,2 @@
+﻿Console.WriteLine($"Saving {nameof(%NAME%)} ...");
+await DataHandler.Save%NAME%(%LNAME%);

@@ -18,7 +18,7 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.Agency", b =>
+            modelBuilder.Entity("Data.Models.Agency", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,100 @@ namespace Data.Migrations
                     b.ToTable("Agency");
                 });
 
-            modelBuilder.Entity("Data.CalendarDates", b =>
+            modelBuilder.Entity("Data.Models.Attributions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AgencyId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AttributionEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AttributionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AttributionPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AttributionUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FieldValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IsAuthority")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IsOperator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IsProducer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganizationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RouteId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TripId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attributions");
+                });
+
+            modelBuilder.Entity("Data.Models.Calendar", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EndDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Friday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Monday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Saturday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sunday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Thursday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Timepoint")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tuesday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Wednesday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Calendar");
+                });
+
+            modelBuilder.Entity("Data.Models.CalendarDates", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,7 +171,7 @@ namespace Data.Migrations
                     b.ToTable("CalendarDates");
                 });
 
-            modelBuilder.Entity("Data.FareAttributes", b =>
+            modelBuilder.Entity("Data.Models.FareAttributes", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,7 +207,7 @@ namespace Data.Migrations
                     b.ToTable("FareAttributes");
                 });
 
-            modelBuilder.Entity("Data.FareRules", b =>
+            modelBuilder.Entity("Data.Models.FareRules", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,7 +237,7 @@ namespace Data.Migrations
                     b.ToTable("FareRules");
                 });
 
-            modelBuilder.Entity("Data.FeedInfo", b =>
+            modelBuilder.Entity("Data.Models.FeedInfo", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,7 +276,112 @@ namespace Data.Migrations
                     b.ToTable("FeedInfo");
                 });
 
-            modelBuilder.Entity("Data.Routes", b =>
+            modelBuilder.Entity("Data.Models.Frequencies", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EndTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExactTimes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HeadwaySecs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShapeDistTraveled")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TripId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Frequencies");
+                });
+
+            modelBuilder.Entity("Data.Models.Levels", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("LevelId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LevelIndex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LevelName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReversedSignpostedAs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Levels");
+                });
+
+            modelBuilder.Entity("Data.Models.Pathways", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FromStopId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IsBidirectional")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Length")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaxSlope")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MinTransferTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MinWidth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PathwayId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PathwayMode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReversedSignpostedAs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignpostedAs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StairCount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToStopId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TraversalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pathways");
+                });
+
+            modelBuilder.Entity("Data.Models.Routes", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,7 +426,7 @@ namespace Data.Migrations
                     b.ToTable("Routes");
                 });
 
-            modelBuilder.Entity("Data.Shapes", b =>
+            modelBuilder.Entity("Data.Models.Shapes", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -258,34 +456,7 @@ namespace Data.Migrations
                     b.ToTable("Shapes");
                 });
 
-            modelBuilder.Entity("Data.StopAmentities", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Bench")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BikeRack")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Shelter")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StopId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Washroom")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StopAmentities");
-                });
-
-            modelBuilder.Entity("Data.StopTimes", b =>
+            modelBuilder.Entity("Data.Models.StopTimes", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -330,7 +501,7 @@ namespace Data.Migrations
                     b.ToTable("StopTimes");
                 });
 
-            modelBuilder.Entity("Data.Stops", b =>
+            modelBuilder.Entity("Data.Models.Stops", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -387,7 +558,7 @@ namespace Data.Migrations
                     b.ToTable("Stops");
                 });
 
-            modelBuilder.Entity("Data.Transfers", b =>
+            modelBuilder.Entity("Data.Models.Transfers", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -414,7 +585,43 @@ namespace Data.Migrations
                     b.ToTable("Transfers");
                 });
 
-            modelBuilder.Entity("Data.Trips", b =>
+            modelBuilder.Entity("Data.Models.Translations", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FeedContactUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FieldName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FieldValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecordId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecordSubId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TableName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Translation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Translations");
+                });
+
+            modelBuilder.Entity("Data.Models.Trips", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()

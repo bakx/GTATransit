@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class Trips : Models.Trips
+    public class Trips : global::Models.Trips
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

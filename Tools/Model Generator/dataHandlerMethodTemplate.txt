@@ -1,0 +1,11 @@
+﻿        public static async Task Save%NAME%(List<%NAME%> %LNAME%)
+        {
+            using (Db db = new Db())
+            {
+                db.%NAME%.RemoveRange(db.%NAME%);
+                await db.%NAME%.AddRangeAsync(%LNAME%);
+
+                await db.SaveChangesAsync();
+            }
+        }
+

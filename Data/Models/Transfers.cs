@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class Calendar : Models.Calendar
+    public class Transfers : global::Models.Transfers
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

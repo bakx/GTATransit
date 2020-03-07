@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class FeedInfo : Models.FeedInfo
+    public class Attributions : global::Models.Attributions
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

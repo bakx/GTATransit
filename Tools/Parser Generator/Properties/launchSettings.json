@@ -2,7 +2,7 @@
   "profiles": {
     "Parser Generator": {
       "commandName": "Project",
-      "commandLineArgs": "E:\\GO_GTFS"
+      "commandLineArgs": "\"C:\\Users\\gideo\\source\\repos\\GTA Transit\\Samples\""
     }
   }
 }

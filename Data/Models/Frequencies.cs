@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class Routes : Models.Routes
+    public class Frequencies : global::Models.Frequencies
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

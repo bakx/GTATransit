@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class FareRules : Models.FareRules
+    public class Pathways : global::Models.Pathways
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

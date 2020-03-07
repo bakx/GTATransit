@@ -27,6 +27,53 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Attributions",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FieldValue = table.Column<string>(nullable: true),
+                    AttributionId = table.Column<string>(nullable: true),
+                    AgencyId = table.Column<string>(nullable: true),
+                    RouteId = table.Column<string>(nullable: true),
+                    TripId = table.Column<string>(nullable: true),
+                    OrganizationName = table.Column<string>(nullable: true),
+                    IsProducer = table.Column<string>(nullable: true),
+                    IsOperator = table.Column<string>(nullable: true),
+                    IsAuthority = table.Column<string>(nullable: true),
+                    AttributionUrl = table.Column<string>(nullable: true),
+                    AttributionEmail = table.Column<string>(nullable: true),
+                    AttributionPhone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Attributions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Calendar",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Timepoint = table.Column<string>(nullable: true),
+                    ServiceId = table.Column<string>(nullable: true),
+                    Monday = table.Column<string>(nullable: true),
+                    Tuesday = table.Column<string>(nullable: true),
+                    Wednesday = table.Column<string>(nullable: true),
+                    Thursday = table.Column<string>(nullable: true),
+                    Friday = table.Column<string>(nullable: true),
+                    Saturday = table.Column<string>(nullable: true),
+                    Sunday = table.Column<string>(nullable: true),
+                    StartDate = table.Column<string>(nullable: true),
+                    EndDate = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Calendar", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CalendarDates",
                 columns: table => new
                 {
@@ -102,6 +149,65 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Frequencies",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ShapeDistTraveled = table.Column<string>(nullable: true),
+                    TripId = table.Column<string>(nullable: true),
+                    StartTime = table.Column<string>(nullable: true),
+                    EndTime = table.Column<string>(nullable: true),
+                    HeadwaySecs = table.Column<string>(nullable: true),
+                    ExactTimes = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Frequencies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Levels",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReversedSignpostedAs = table.Column<string>(nullable: true),
+                    LevelId = table.Column<string>(nullable: true),
+                    LevelIndex = table.Column<string>(nullable: true),
+                    LevelName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Levels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pathways",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MinTransferTime = table.Column<string>(nullable: true),
+                    PathwayId = table.Column<string>(nullable: true),
+                    FromStopId = table.Column<string>(nullable: true),
+                    ToStopId = table.Column<string>(nullable: true),
+                    PathwayMode = table.Column<string>(nullable: true),
+                    IsBidirectional = table.Column<string>(nullable: true),
+                    Length = table.Column<string>(nullable: true),
+                    TraversalTime = table.Column<string>(nullable: true),
+                    StairCount = table.Column<string>(nullable: true),
+                    MaxSlope = table.Column<string>(nullable: true),
+                    MinWidth = table.Column<string>(nullable: true),
+                    SignpostedAs = table.Column<string>(nullable: true),
+                    ReversedSignpostedAs = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pathways", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Routes",
                 columns: table => new
                 {
@@ -140,23 +246,6 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shapes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StopAmentities",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StopId = table.Column<string>(nullable: true),
-                    Shelter = table.Column<string>(nullable: true),
-                    Washroom = table.Column<string>(nullable: true),
-                    BikeRack = table.Column<string>(nullable: true),
-                    Bench = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StopAmentities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,6 +316,26 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Translations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FeedContactUrl = table.Column<string>(nullable: true),
+                    TableName = table.Column<string>(nullable: true),
+                    FieldName = table.Column<string>(nullable: true),
+                    Language = table.Column<string>(nullable: true),
+                    Translation = table.Column<string>(nullable: true),
+                    RecordId = table.Column<string>(nullable: true),
+                    RecordSubId = table.Column<string>(nullable: true),
+                    FieldValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Translations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Trips",
                 columns: table => new
                 {
@@ -256,6 +365,12 @@ namespace Data.Migrations
                 name: "Agency");
 
             migrationBuilder.DropTable(
+                name: "Attributions");
+
+            migrationBuilder.DropTable(
+                name: "Calendar");
+
+            migrationBuilder.DropTable(
                 name: "CalendarDates");
 
             migrationBuilder.DropTable(
@@ -268,13 +383,19 @@ namespace Data.Migrations
                 name: "FeedInfo");
 
             migrationBuilder.DropTable(
+                name: "Frequencies");
+
+            migrationBuilder.DropTable(
+                name: "Levels");
+
+            migrationBuilder.DropTable(
+                name: "Pathways");
+
+            migrationBuilder.DropTable(
                 name: "Routes");
 
             migrationBuilder.DropTable(
                 name: "Shapes");
-
-            migrationBuilder.DropTable(
-                name: "StopAmentities");
 
             migrationBuilder.DropTable(
                 name: "Stops");
@@ -284,6 +405,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Transfers");
+
+            migrationBuilder.DropTable(
+                name: "Translations");
 
             migrationBuilder.DropTable(
                 name: "Trips");

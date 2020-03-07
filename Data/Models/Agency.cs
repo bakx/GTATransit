@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Data
+namespace Data.Models
 {
-    public class Stops : Models.Stops
+    public class Agency : global::Models.Agency
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
