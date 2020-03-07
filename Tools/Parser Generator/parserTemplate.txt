@@ -1,7 +1,6 @@
 ﻿// Start of automatically generated code
 
 %LIST%
-
 foreach (FileInfo file in files)
 {
     StreamReader reader = new StreamReader(file.FullName);

@@ -16,6 +16,9 @@ namespace ModelGenerator
             // Read templates
             string classTemplate = File.ReadAllText("classTemplate.txt");
             string methodTemplate = File.ReadAllText("methodTemplate.txt");
+            string dbModelTemplate = File.ReadAllText("dbModelTemplate.txt");
+            string dataHandlerTemplate = File.ReadAllText("dataHandlerTemplate.txt");
+            string dataHandlerMethodTemplate = File.ReadAllText("dataHandlerMethodTemplate.txt");
 
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
@@ -27,7 +30,13 @@ namespace ModelGenerator
             //  - OpenXml Excel files (2007 format; *.xlsx)
             using IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
 
+            // string builders
             StringBuilder builder = new StringBuilder();
+            StringBuilder dataHandlerMethods = new StringBuilder();
+
+            // Create export directories
+            Directory.CreateDirectory("models");
+            Directory.CreateDirectory("db");
 
             //
             string columnName = null;
@@ -80,18 +89,37 @@ namespace ModelGenerator
 
                 // Get class name
                 string className = textInfo.ToTitleCase(reader.Name).Replace(".Txt", "").Replace("_", "");
+                string lowerClassName = className[0].ToString().ToLower() + className.Remove(0, 1);
 
                 // Write file
-                File.WriteAllText($"{className}.cs", 
+                File.WriteAllText($"models/{className}.cs", 
                     classTemplate
                         .Replace("%NAME%", className)
                         .Replace("%CLASS%", builder.ToString())
                     );
 
+                // Write db file
+                File.WriteAllText($"db/{className}.cs",
+                    dbModelTemplate
+                        .Replace("%NAME%", className)
+                );
+
+                // Write final method
+                dataHandlerMethods.Append(dataHandlerMethodTemplate
+                    .Replace("%NAME%", className)
+                    .Replace("%LNAME%", lowerClassName)
+                );
+
                 // Clear string builder
                 builder.Clear();
 
             } while (reader.NextResult());
+
+            // Write the dataHandler file
+            File.WriteAllText("dataHandler.cs",
+                dataHandlerTemplate
+                    .Replace("%METHODS%", dataHandlerMethods.ToString())
+            );
         }
     }
 }

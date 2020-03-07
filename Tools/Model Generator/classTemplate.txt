@@ -2,7 +2,7 @@
 
 namespace Models
 {
- public class %NAME%
+ public abstract class %NAME%
  {
     %CLASS%
  }

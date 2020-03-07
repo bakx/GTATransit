@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Parser": {
+      "commandName": "Project",
+      "commandLineArgs": "E:\\\\GO_GTFS"
+    }
+  }
+}

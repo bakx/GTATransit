@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Parser Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\gideo\\source\\repos\\GTA Transit\\Samples\""
+    }
+  }
+}
