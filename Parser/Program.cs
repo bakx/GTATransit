@@ -11,7 +11,7 @@ namespace Parser
         private static async Task Main(string[] args)
         {
             // GTFS Folder
-            string gtfsPath = args.Length > 0 ? args[0] : @"C:\Users\gideo\Downloads\GO_GTFS";
+            string gtfsPath = args.Length > 0 ? args[0] : "GO_GTFS";
 
             // GTFS Folder
             FileInfo[] files = new DirectoryInfo(gtfsPath).GetFiles("*.txt");
